@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Hide the credential fields initially */
+        #credentials { 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">  
+<!-- the palindrome checker -->
+        <div class="main"> 
+            <h1 id="mainHeading">Palindrome Checker</h1> 
+            <p id="mainParagraph">Enter a string to check if it is a palindrome.</p> 
+            <input type="text" id="inputString" placeholder="Enter a string"> 
+            <button id="checkPalindromeButton">Check Palindrome</button> 
+<!-- the form for the agent credentials  -->
+            <form id="credentials"> 
+                <input type="text" id="fname" placeholder="First Name" size="20" required>
+                <input type="text" id="lname" placeholder="Last Name" size="20" required>
+                <input type="number" id="zipcode" placeholder="Zip Code" size="5" required>
+<!-- the button to check the credentials -->
+                <button type="button" id="checkButton">Check</button> 
+            </form>
+<!-- the result div -->
+            <div id="result"></div> 
+        </div>
+    </div>
+    <script>
+        // Get references to the HTML elements
+        const inputField = document.getElementById("inputString"); 
+        const checkPalindromeButton = document.getElementById("checkPalindromeButton"); 
+        const credentialsForm = document.getElementById("credentials"); 
+        const fnameInput = document.getElementById('fname'); 
+        const lnameInput = document.getElementById('lname'); 
+        const zipcodeInput = document.getElementById('zipcode'); 
+        const checkButton = document.getElementById('checkButton'); 
+        const resultDiv = document.getElementById('result'); 
+        const mainHeading = document.getElementById('mainHeading'); 
+        const mainParagraph = document.getElementById('mainParagraph'); 
+
+        // Alert with the code to activate user input
+        alert("try this palindrome 1001"); 
+
+        // Event listener for the Enter key in the input field
+        inputField.addEventListener("keyup", function (event) { 
+            if (event.keyCode === 13) { 
+                checkPalindrome(); 
+            }
+        });
+
+        // Event listener for the "Check Palindrome" button
+        checkPalindromeButton.addEventListener("click", function () { 
+            checkPalindrome(); 
+        });
+
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            // Convert the string to lowercase and remove non-alphanumeric characters
+            str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""); 
+            let reversedStr = "";
+            // Iterate through the string in reverse order
+            for (let i = str.length - 1; i >= 0; i--) { 
+                reversedStr += str[i]; 
+            }
+            // Check if the original string is equal to its reversed version
+            return str === reversedStr; 
+        }
+
+        // Function to handle the palindrome check logic
+        function checkPalindrome() {
+            const inputString = document.getElementById("inputString").value; 
+            // Check if the entered string is a palindrome using the isPalindrome function
+            if (isPalindrome(inputString)) { 
+                // If it is a palindrome, check if it's the special code "1001"
+                if (inputString === "1001") { 
+                    // If it's the code, 1001
+                    credentialsForm.style.display = "block";  
+                    // Display the credential form
+                    inputField.style.display = "none"; 
+                    // Hide the input field
+                    checkPalindromeButton.style.display = "none";
+                    // Hide the check palindrome button
+                    mainParagraph.textContent = "Enter your credentials."; 
+                    // Change the main paragraph text
+                    resultDiv.textContent = ""; 
+                    // Clear the result div
+                } else {
+                    // If it's a regular palindrome, display the result
+                    resultDiv.textContent = `${inputString} is a Palindrome!`; 
+                }
+            } else {
+                // If it's not a palindrome, display the result
+                resultDiv.textContent = `${inputString} is not a Palindrome. Try Again!`; 
+            }
+        }
+
+        // Event listener assigned to the click event
+        checkButton.addEventListener('click', function (event) {
+          // prevents the default action of the button if the information is invalid
+            event.preventDefault(); 
+            // Get the values entered in the input fields and assign a variable to each
+            let fName = fnameInput.value; 
+            let lName = lnameInput.value; 
+            let zipcode = zipcodeInput.value; 
+
+            // Validate the first name
+            if (fName.length > 20 || fName.length === 0) { 
+              // if condition: if the length is over 20 char or equal to 0
+                resultDiv.textContent = "Invalid First Name";
+                  // present invalid last name message
+                return false; 
+            }
+
+            // Validate the last name
+            if (lName.length > 20 || lName.length === 0) { 
+              // if condition: if the length is over 20 char or equal to 0
+                resultDiv.textContent = "Invalid Last Name";
+                // present invalid last name message
+                return false; 
+            }
+
+            // Validate the zip code
+            if (zipcode.length !== 5 || isNaN(zipcode)) { 
+              // if condition: the length isnt equal to 5 characters or a number is not entered
+                resultDiv.textContent = "Invalid zip code!";
+                //present invalid zipcode message
+                return; 
+            }
+
+            // If all inputs are valid, proceed
+            let fullName = fName + " " + lName;
+            // Combine the first and last names
+            let message = "Your Mission if you choose to accept it" ; 
+            // Set the message to display
+
+           
+            let img = document.createElement("img");
+             // Create image element
+            img.src = "images/secret.png"; 
+            // Set the image source
+            img.alt = "Secret Image";
+            // Set the image alt text
+
+            
+            resultDiv.innerHTML = '';
+            // clear the previous content 
+            resultDiv.appendChild(img);
+            // add the image to the result div
+            resultDiv.innerHTML += message + '<br>';
+            // add the message to the result div
+
+           
+            credentialsForm.style.display = "none";
+             //hides the credentials form 
+            mainParagraph.style.display = "none";
+            // hides the main paragraph
+            mainHeading.textContent = "Welcome " + fullName;
+            // Changes the main h1 text content to welcome the user
+
+            // Set a timer to reset the screen after 10 seconds
+            setTimeout(function() {
+                // Reset the form and show the initial screen
+                credentialsForm.reset();
+                // Reset the form fields
+                credentialsForm.style.display = "none";
+                // Hide the credentials form
+                inputField.style.display = "block";
+                // Show the input field
+                checkPalindromeButton.style.display = "block";
+                // Show the check palindrome button
+                mainHeading.textContent = "Palindrome Checker";
+                // Change the main h1 text content
+                mainParagraph.textContent = "Enter a string to check if it is a palindrome.";
+                // Change the main paragraph text content
+                mainParagraph.style.display = "block";
+                // Show the main paragraph
+                resultDiv.textContent = "";
+                // Clear the result div
+            }, 10000); 
+        });
+    </script>
+</body>
+</html>

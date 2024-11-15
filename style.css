@@ -1,0 +1,59 @@
+/* ------------- h1 style start----------------------- */
+h1{
+  color: rgb(255, 255, 255); /* Sets the text color of h1 elements to white */
+  text-shadow: 2px 2px 4px #2bf5b8 /* Adds a light green text shadow with a 2px horizontal and vertical offset and a 4px blur radius */
+}
+
+/* ------------- body style start----------------------- */
+body{
+  background-image: url(images/360_F_972210124_5DPPNcuQt4Yvqs2Xu8ffCkbBfWwJYn0M.jpg); /* Sets the background image for the body */
+  background-size:cover; /* Makes the background image cover the entire body */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  background-attachment: fixed; /* Fixes the background image so it doesn't scroll with the content */
+  background-position: center; /* Centers the background image */
+  text-align: center; /* Centers the text content within the body */
+}
+
+/* ------------- p style start----------------------- */
+p{
+  color: rgb(255, 255, 255); /* Sets the text color of p elements to white */
+  text-shadow: 2px 2px 8px #ff10ff /* Adds a pink text shadow with a 2px horizontal and vertical offset and an 8px blur radius */
+}
+
+/* ------------- main style start----------------------- */
+.main{
+  background-image: url(images/2.png); /* Sets the background image for the .main element */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  width: 500px; /* Sets the width of the .main element to 500px */
+  height: 300px; /* Sets the height of the .main element to 300px */
+  margin-left: 200px; /* Adds a left margin of 200px to the .main element */
+  margin-top: 100px; /* Adds a top margin of 100px to the .main element */
+  padding: 30px; /* Adds 30px of padding to the .main element */
+  border-radius: 10px; /* Adds a 10px border radius to the .main element */
+  box-shadow: 2px 2px 20px #2bf5b8; /* Adds a light green box shadow with a 2px horizontal and vertical offset and a 20px blur radius */
+}
+
+/* ------------- container style start----------------------- */
+.container{
+  display: flex; /* Enables flexbox layout for the .container element */
+  justify-content: center; /* Centers the content horizontally within the .container */
+  align-items: center; /* Centers the content vertically within the .container */
+  flex-direction: column; /* Stacks the content vertically within the .container */
+}
+
+/* ------------- style start----------------------- */
+#result{
+  background-color: #3f22bd; /* Sets the background color of the #result element to a dark purple */
+  opacity: 80%; /* Sets the opacity of the #result element to 80% */
+  color: rgb(255, 255, 255); /* Sets the text color of the #result element to white */
+  text-shadow: 2px 2px 4px #3f22bd; /* Adds a dark purple text shadow with a 2px horizontal and vertical offset and a 4px blur radius */
+  margin-top: 80px; /* Adds a top margin of 80px to the #result element */
+}
+
+/* ------------- style start----------------------- */
+#credentials {
+  display: none; /* Hides the #credentials element by default */
+}
+
+
+
